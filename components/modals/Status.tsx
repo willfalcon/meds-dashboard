@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import styled from 'styled-components';
+
 import StatusContext from '../../contexts/StatusContext';
 import { ConnectionStatus } from '../../types';
 
@@ -27,29 +27,29 @@ const Status: React.FunctionComponent = ({}) => {
   }, [status]);
 
   return (
-    <StatusModal show={showModal}>
+    <div show={showModal}>
       { StatusText[status] }
-    </StatusModal>
+    </div>
   )
 
 };
 
 export default Status;
 
-const StatusModal = styled.div<{ show: boolean }>`
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  font-weight: bold;
-  transition: all .25s ease-in-out;
+// const StatusModal = styled.div<{ show: boolean }>`
+//   position: fixed;
+//   bottom: 2rem;
+//   right: 2rem;
+//   font-weight: bold;
+//   transition: all .25s ease-in-out;
 
-  @media screen and (max-width: 1200px) {
-    bottom: 1rem;
-    right: 1rem;
-  }
+//   @media screen and (max-width: 1200px) {
+//     bottom: 1rem;
+//     right: 1rem;
+//   }
 
-  ${({ show }) => `
-    opacity: ${show ? 1 : 0};
-    transform: translateY(${show ? 0 : '200%'});
-  `}
-`;
+//   ${({ show }) => `
+//     opacity: ${show ? 1 : 0};
+//     transform: translateY(${show ? 0 : '200%'});
+//   `}
+// `;

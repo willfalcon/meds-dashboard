@@ -15,7 +15,7 @@ import useAuthStore from "../stores/auth.store";
 import useHassStore from "../stores/hass.store";
 import { HomeAssistantInstance } from "../types";
 
-const AuthWrapper: React.FunctionComponent = ({ children }) => {
+export default function AuthWrapper({ children }) {
   const router = useRouter();
   const {
     saveAuthData,
@@ -101,4 +101,3 @@ const AuthWrapper: React.FunctionComponent = ({ children }) => {
   );
 };
 
-export default AuthWrapper;

@@ -1,4 +1,4 @@
-const APP_NAME = 'app-name';
+const APP_NAME = 'The Nest';
 
 export {
   APP_NAME,

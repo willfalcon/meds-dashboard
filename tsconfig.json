@@ -21,9 +21,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@contexts": ["./contexts/index.ts"],
-      "@hooks": ["./hooks/index.ts"],
-      "@components/*": ["./components/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [

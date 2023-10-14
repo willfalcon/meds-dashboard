@@ -1,9 +1,12 @@
+import Wrapper from "@/components/Wrapper";
 import AppProvider from "../providers";
 import "../styles/globals.css";
 
 const App = ({ Component, pageProps }) => (
   <AppProvider>
-    <Component {...pageProps} />
+    <Wrapper>
+      <Component {...pageProps} />
+    </Wrapper>
   </AppProvider>
 );
 export default App;

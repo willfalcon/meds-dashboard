@@ -3,9 +3,7 @@ import Fuse from 'fuse.js';
 import SearchContext from '../contexts/SearchContext';
 import useHass from '../hooks/useHass';
 
-const SearchProvider: React.FunctionComponent = ({
-  children,
-}) => {
+export default function SearchProvider ({children}) {
   const {
     entities,
   } = useHass();
@@ -41,5 +39,3 @@ const SearchProvider: React.FunctionComponent = ({
   )
 
 }
-
-export default SearchProvider;

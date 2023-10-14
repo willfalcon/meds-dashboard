@@ -11,9 +11,7 @@ import useAuth from '../hooks/useAuth';
 import useHassStore from '../stores/hass.store';
 import { ConnectionStatus } from '../types';
 
-const HassWrapper: React.FunctionComponent = ({
-  children
-}) => {
+export default function HassWrapper ({children}){
   const { auth } = useAuth();
   const { connection } = useHassStore();
   const [status, setStatus] = useState(ConnectionStatus.Disconnected);
@@ -58,5 +56,3 @@ const HassWrapper: React.FunctionComponent = ({
     </StatusContext.Provider>
   )
 }
-
-export default HassWrapper;

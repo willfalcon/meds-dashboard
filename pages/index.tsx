@@ -1,51 +1,21 @@
-import React, { useState } from 'react';
+import { Separator } from '@/components/ui/separator';
+import prisma from '@/lib/prisma';
+import LogForm from '@/components/forms/LogForm';
 
-import { useAuth, useEntities, useHass, useQuery } from '@hooks';
-import { Page } from '@components/structure';
-
-
-const Home: React.FunctionComponent = () => {;
-
-  const { logout } = useAuth();
-  const { connection } = useHass();
-  const entities = useEntities();
-
-  const [query, setQuery] = useState<string | undefined>();
-  const results = useQuery(query || '');
-
-  const t = results['foo'];
-
+export default function Home({meds}) {
   return (
-    <Page>
-      <button
-        onClick={() => logout(connection)}
-      >
-        Log Out
-      </button>
-
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-
-      <p>
-        Total # of Entities:
-        { ' ' }
-        { Object.keys(entities).length }
-      </p>
-
-      <p>
-        # of Found Entities:
-        { ' ' }
-        { Object.keys(results).length }
-      </p>
-
-      <pre>
-        { JSON.stringify(results, null, 2) }
-      </pre>
-    </Page>
-  )
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-4xl font-bold mb-4">Log</h2>
+      </div>
+      <Separator />
+      <LogForm meds={meds} />
+    </div>
+  );
 }
 
-export default Home;
+
+export const getServerSideProps = async () => {
+  const meds = await prisma.medication.findMany();
+  return { props: { meds: JSON.parse(JSON.stringify(meds)) } };
+};
