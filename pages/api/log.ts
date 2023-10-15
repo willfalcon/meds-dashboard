@@ -14,14 +14,14 @@ export default async function handler(req, res) {
         notes: true,
       },
     });
-    console.log('bodyNotes: ', body.notes);
+    // console.log('bodyNotes: ', body.notes);
     if (existing) {
       // update existing log
-      console.log('existing: ', existing);
+      // console.log('existing: ', existing);
 
       const notesToUpdate = existing.notes.filter(note => body.notes.some(bodyNote => bodyNote.med === note.medId));
 
-      console.log('notes to update: ', notesToUpdate);
+      // console.log('notes to update: ', notesToUpdate);
 
       const updatedLogNotes = await Promise.all(
         notesToUpdate.map(async note => {
@@ -39,8 +39,8 @@ export default async function handler(req, res) {
         })
       );
 
-      console.log('existing notes updated');
-      console.log('updatedLogNotes: ', updatedLogNotes);
+      // console.log('existing notes updated');
+      // console.log('updatedLogNotes: ', updatedLogNotes);
 
       const newNotes = body.notes.filter(bodyNote => !existing.notes.some(note => note.medId === bodyNote.med));
 
@@ -96,7 +96,7 @@ export default async function handler(req, res) {
           },
         })
         .catch(e => console.error(e));
-      console.log(newLog);
+      // console.log(newLog);
       res.status(200).json({ newLog });
     }
   } catch (error) {

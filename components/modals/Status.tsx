@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, {  useEffect, useContext } from 'react';
 
 import StatusContext from '../../contexts/StatusContext';
 import { ConnectionStatus } from '../../types';
+import { useToast } from '../ui/use-toast';
 
 const StatusText: Record<ConnectionStatus, string> = {
   [ConnectionStatus.Connected]: "Connected",
@@ -11,45 +12,29 @@ const StatusText: Record<ConnectionStatus, string> = {
 
 const Status: React.FunctionComponent = ({}) => {
 
-  const timeout = useRef<ReturnType<typeof setTimeout> | undefined>();
+  // const timeout = useRef<ReturnType<typeof setTimeout> | undefined>();
   const status = useContext(StatusContext);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
-    if (timeout.current) clearTimeout(timeout.current);
-    setShowModal(true);
-    if (status !== ConnectionStatus.Reconnecting) {
-      setTimeout(() => {
-        setShowModal(false);
-        timeout.current = undefined;
-      }, 3000);
-    }
-  }, [status]);
+    // if (timeout.current) clearTimeout(timeout.current);
+    // setShowModal(true);
+    // if (status !== ConnectionStatus.Reconnecting) {
+    //   setTimeout(() => {
+    //     setShowModal(false);
+    //     timeout.current = undefined;
+    //   }, 3000);
+    // }
+    toast({
+      description: StatusText[status]
+    });
+  }, [status, toast]);
 
   return (
-    <div show={showModal}>
-      { StatusText[status] }
-    </div>
+    <></>
   )
 
 };
 
 export default Status;
-
-// const StatusModal = styled.div<{ show: boolean }>`
-//   position: fixed;
-//   bottom: 2rem;
-//   right: 2rem;
-//   font-weight: bold;
-//   transition: all .25s ease-in-out;
-
-//   @media screen and (max-width: 1200px) {
-//     bottom: 1rem;
-//     right: 1rem;
-//   }
-
-//   ${({ show }) => `
-//     opacity: ${show ? 1 : 0};
-//     transform: translateY(${show ? 0 : '200%'});
-//   `}
-// `;

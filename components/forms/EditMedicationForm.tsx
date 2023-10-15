@@ -27,7 +27,7 @@ export default function EditMedicationForm({ defaults }) {
     } else {
       form.setError(res.field, { type: 'custom', message: res.message });
     }
-    console.log(res);
+    // console.log(res);
   }
 
   return (

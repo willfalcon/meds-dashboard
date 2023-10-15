@@ -28,7 +28,7 @@ export default function MedCard({ id, name, dose, morning, night, asNeeded }) {
       method: 'DELETE',
       body: JSON.stringify({ id }),
     });
-    console.log(res);
+    // console.log(res);
     if (res.status === 200) {
       setDeleteDialog(false);
       refreshData();

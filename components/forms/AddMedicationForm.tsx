@@ -33,7 +33,7 @@ export default function AddMedicationForm() {
     } else {
       form.setError(res.field, { type: 'custom', message: res.message });
     }
-    console.log(res);
+    // console.log(res);
   }
 
   return (
