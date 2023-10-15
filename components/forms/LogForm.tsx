@@ -29,7 +29,7 @@ const logFormSchema = z.object({
 });
 
 export default function LogForm({ meds, date = new Date(), notes = [] }) {
-  console.log(notes);
+  
   const form = useForm({
     resolver: zodResolver(logFormSchema),
     defaultValues: {

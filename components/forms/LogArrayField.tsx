@@ -62,17 +62,17 @@ export default function LogArrayField({ id, index, getValues, setValue, meds, co
             <CommandInput placeholder="Search codes..." />
             <CommandEmpty>No codes found.</CommandEmpty>
             <CommandGroup>
-              {codes.map(code => (
+              {codes.map(codeItem => (
                 <CommandItem
-                  key={code.value}
-                  value={code.value}
+                  key={codeItem.value}
+                  value={codeItem.value}
                   onSelect={currentValue => {
                     // console.log(currentValue);
                     setValue('notes', [...values.slice(0, index), { ...values[index], code: currentValue }, ...values.slice(index + 1)]);
                   }}
                 >
-                  <Check className={cn('mr-2 h-4 w-4', code === code.value ? 'opacity-100' : 'opacity-0')} />
-                  {code.label}
+                  <Check className={cn('mr-2 h-4 w-4', code === codeItem.value ? 'opacity-100' : 'opacity-0')} />
+                  {codeItem.label}
                 </CommandItem>
               ))}
             </CommandGroup>
