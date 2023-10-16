@@ -28,7 +28,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "utils/connect.js"  ],
   "exclude": [
     "node_modules"
   ]
