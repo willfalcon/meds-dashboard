@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/dist/client/router";
 
 import { useDiscovery, useAuth } from "@/hooks";
-import Wrapper from "@/components/Wrapper";
+// import Wrapper from "@/components/Wrapper";
 
 const Auth = () => {
   const router = useRouter();
